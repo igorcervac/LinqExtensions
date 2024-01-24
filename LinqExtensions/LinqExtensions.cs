@@ -12,5 +12,11 @@ namespace LinqApp
             return source.Aggregate((x, y) => keySelector(y).CompareTo(keySelector(x)) > 0 ? y : x);
         }
 
+        public static U MinBy<U, V>(this IEnumerable<U> source, Func<U, V> keySelector)
+            where V : IComparable<V>
+        {
+            return source.Aggregate((x, y) => keySelector(y).CompareTo(keySelector(x)) < 0 ? y : x);
+        }
+
     }
 }
