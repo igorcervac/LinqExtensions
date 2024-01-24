@@ -18,5 +18,27 @@ namespace LinqApp
             return source.Aggregate((x, y) => keySelector(y).CompareTo(keySelector(x)) < 0 ? y : x);
         }
 
+        public static IEnumerable<V> TrySelect<U, V>(this IEnumerable<U> source, Func<U, V> keySelector)
+        {
+            foreach (var s in source)
+            {
+                bool success = true;
+                V result = default;
+
+                try
+                {
+                    result = keySelector(s);
+                }
+                catch (Exception)
+                {
+                    success = false;
+                }
+
+                if (success)
+                {
+                    yield return result;
+                }
+            }
+        }
     }
 }
