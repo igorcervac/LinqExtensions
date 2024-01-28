@@ -40,5 +40,25 @@ namespace LinqApp
                 }
             }
         }
+
+        public static Dictionary<V, int> CountBy<U,V>(this IEnumerable<U> source, Func<U, V> selector)
+        {
+            var dictionary  = new Dictionary<V, int>();
+
+            foreach(var s in source)
+            {
+                var selectedValue = selector(s);
+                if (!dictionary.ContainsKey(selectedValue))
+                {
+                    dictionary.Add(selectedValue, 1);
+                }
+                else
+                {
+                    dictionary[selectedValue]++;
+                }
+            }
+
+            return dictionary;
+        }
     }
 }
