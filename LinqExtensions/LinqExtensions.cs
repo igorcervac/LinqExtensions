@@ -60,5 +60,15 @@ namespace LinqApp
 
             return dictionary;
         }
+
+        public static bool LogicalAnd(this IEnumerable<bool> source)
+        {
+            return source.Aggregate(true, (x, y) => x && y);
+        }
+
+        public static bool LogicalOr(this IEnumerable<bool> source)
+        {
+            return source.Aggregate(true, (x, y) => x || y);
+        }
     }
 }
