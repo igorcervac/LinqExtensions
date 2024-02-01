@@ -45,9 +45,10 @@
   <ItemGroup>
     <Compile Include="LinqExtensions.cs" />
     <None Include="MinBy.cs" />
-    <Compile Include="CountBy.cs" />
+    <None Include="CountBy.cs" />
     <None Include="TrySelect.cs" />
     <None Include="MaxBy.cs" />
+    <Compile Include="Logical.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
