@@ -70,5 +70,15 @@ namespace LinqApp
         {
             return source.Aggregate(true, (x, y) => x || y);
         }
+
+        public static IEnumerable<U> DistinctBy<U,V>(this IEnumerable<U> source, Func<U,V> keySelector)
+        {
+            var query = source.GroupBy(keySelector);
+
+            foreach (var group in query)
+            {
+                yield return group.First();
+            }
+        }
     }
 }
