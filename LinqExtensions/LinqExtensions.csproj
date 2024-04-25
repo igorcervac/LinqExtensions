@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DistinctBy.cs" />
+    <Compile Include="RankBy.cs" />
+    <None Include="DistinctBy.cs" />
     <Compile Include="LinqExtensions.cs" />
     <None Include="MinBy.cs" />
     <None Include="CountBy.cs" />
