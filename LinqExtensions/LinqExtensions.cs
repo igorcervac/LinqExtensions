@@ -80,5 +80,14 @@ namespace LinqApp
                 yield return group.First();
             }
         }
+
+        public static IDictionary<U, int> RankBy<U,V>(this IEnumerable<U> source, Func<U,V> keySelector)
+            where V : IComparable<V>
+        {
+            return source
+                .Select(x => new { Value = x, Rank = source
+                .Count(y => keySelector(x).CompareTo(keySelector(y)) > 0) + 1 })
+                .ToDictionary(x => x.Value, y => y.Rank);
+        }
     }
 }
