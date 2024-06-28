@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LinqApp
+namespace LinqExtensions
 {
     internal class MinByApp
     {

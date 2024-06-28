@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 
-namespace LinqApp
+namespace LinqExtensions
 {
-    internal class MinByApp
+    internal class Program
     {
         static void Main()
         {

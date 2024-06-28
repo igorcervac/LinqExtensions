@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LinqApp
+namespace LinqExtensions
 {
-    static partial class LinqExtensions
+    public static partial class LinqExtensions
     {
         public static U MaxBy<U, V>(this IEnumerable<U> source, Func<U, V> keySelector)
             where V : IComparable<V>
@@ -63,12 +63,12 @@ namespace LinqApp
 
         public static bool LogicalAnd(this IEnumerable<bool> source)
         {
-            return source.Aggregate(true, (x, y) => x && y);
+            return source.Aggregate((x, y) => x && y);
         }
 
         public static bool LogicalOr(this IEnumerable<bool> source)
         {
-            return source.Aggregate(true, (x, y) => x || y);
+            return source.Aggregate((x, y) => x || y);
         }
 
         public static IEnumerable<U> DistinctBy<U,V>(this IEnumerable<U> source, Func<U,V> keySelector)

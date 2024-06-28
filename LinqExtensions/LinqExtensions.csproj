@@ -46,11 +46,8 @@
     <Compile Include="RankBy.cs" />
     <None Include="DistinctBy.cs" />
     <Compile Include="LinqExtensions.cs" />
-    <None Include="MinBy.cs" />
     <None Include="CountBy.cs" />
     <None Include="TrySelect.cs" />
-    <None Include="MaxBy.cs" />
-    <None Include="Logical.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
