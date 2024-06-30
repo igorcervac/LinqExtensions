@@ -51,5 +51,30 @@ namespace LinqExtensions.Tests
             var actual = values.MaxBy(x => x.Temperature);
             Assert.AreEqual(values.OrderByDescending(x => x.Temperature).First(), actual);
         }
+
+        [DataRow(10, 100, 10, 10)]
+        [DataRow(100, 100, 10, 100)]
+        [DataRow(10, 1000, 1000, 1000)]
+        [TestMethod]
+        public void DistinctBy(int arg, int arg2, int arg3, int expected)
+        {
+            var values = new[]
+            {
+                new
+                {
+                    Id = arg,
+                },
+                new
+                {
+                    Id = arg2
+                },
+                new
+                {
+                    Id = arg3
+                }
+            };
+            var distinctValues = values.DistinctBy(x => x.Id);
+            Assert.AreEqual(1, distinctValues.Count(x => x.Id == expected));
+        }
     }
 }
