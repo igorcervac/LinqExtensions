@@ -86,7 +86,7 @@ namespace LinqExtensions
         {
             return source
                 .Select(x => new { Value = x, Rank = source
-                .Count(y => keySelector(x).CompareTo(keySelector(y)) > 0) + 1 })
+                .Count(y => keySelector(y).CompareTo(keySelector(x)) > 0) + 1 })
                 .ToDictionary(x => x.Value, y => y.Rank);
         }
     }
