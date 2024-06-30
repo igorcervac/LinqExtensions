@@ -114,9 +114,9 @@ namespace LinqExtensions.Tests
                 new { Points = value2 },
                 new { Points = value3 }
             };
-            var ranks = values.RankBy(x => x.Points);
-            var club = values.First(x => x.Points == valueToRank);
-            Assert.AreEqual(ranks[club], expectedRank);
+            var clubRankings = values.RankBy(x => x.Points);
+            var clubRanking = values.First(x => x.Points == valueToRank);
+            Assert.AreEqual(clubRankings[clubRanking], expectedRank);
         }
 
         [DataRow(10, 20, 30, 3)]
