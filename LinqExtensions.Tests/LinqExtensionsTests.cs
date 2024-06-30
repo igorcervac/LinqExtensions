@@ -30,26 +30,26 @@ namespace LinqExtensions.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [DataRow(100, 50)]
-        [DataRow(25, 75)]
-        [DataRow(-25, -75)]
+        [DataRow(100, 50, 50)]
+        [DataRow(25, 75, 25)]
+        [DataRow(-25, -75, -75)]
         [TestMethod]
-        public void MinBy(int arg, int arg2)
+        public void MinBy(int arg, int arg2, int expected)
         {
             var values = new[] { new { Temperature = arg }, new { Temperature = arg2 } };
             var actual = values.MinBy(x => x.Temperature);
-            Assert.AreEqual(values.OrderBy(x => x.Temperature).First(), actual);
+            Assert.AreEqual(values.FirstOrDefault(x => x.Temperature == expected), actual);
         }
 
-        [DataRow(100, 50)]
-        [DataRow(25, 75)]
-        [DataRow(-25, -75)]
+        [DataRow(100, 50, 100)]
+        [DataRow(25, 75, 75)]
+        [DataRow(-25, -75, -25)]
         [TestMethod]
-        public void MaxBy(int arg, int arg2)
+        public void MaxBy(int arg, int arg2, int expected)
         {
             var values = new[] { new { Temperature = arg }, new { Temperature = arg2 } };
             var actual = values.MaxBy(x => x.Temperature);
-            Assert.AreEqual(values.OrderByDescending(x => x.Temperature).First(), actual);
+            Assert.AreEqual(values.FirstOrDefault(x => x.Temperature == expected), actual);
         }
 
         [DataRow(10, 100, 10, 10)]
@@ -75,6 +75,31 @@ namespace LinqExtensions.Tests
             };
             var distinctValues = values.DistinctBy(x => x.Id);
             Assert.AreEqual(1, distinctValues.Count(x => x.Id == expected));
+        }
+
+        [DataRow(50, 50, 50, 50, 3)]
+        [DataRow(100, 50, 50, 50, 2)]
+        [DataRow(100, 50, 0, 50, 1)]
+        [TestMethod]
+        public void CountBy(int arg, int arg2, int arg3, int valueToCount, int expected)
+        {
+            var values = new[] 
+            { 
+                new 
+                { 
+                    Temperature = arg 
+                }, 
+                new 
+                { 
+                    Temperature = arg2 
+                }, 
+                new 
+                { 
+                    Temperature = arg3 
+                }
+            };
+            var actual = values.CountBy(x => x.Temperature);
+            Assert.AreEqual(expected, actual[valueToCount]);
         }
     }
 }

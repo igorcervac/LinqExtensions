@@ -44,9 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RankBy.cs" />
-    <None Include="DistinctBy.cs" />
     <Compile Include="LinqExtensions.cs" />
-    <None Include="CountBy.cs" />
     <None Include="TrySelect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
